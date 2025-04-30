@@ -13,6 +13,12 @@ export default defineConfig([
     files: ["**/*.{js,mjs,cjs,ts}"],
     plugins: { js },
     extends: ["js/recommended"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node, // Add Node.js globals
+      },
+    },
   },
   {
     files: ["**/*.{js,mjs,cjs,ts}"],

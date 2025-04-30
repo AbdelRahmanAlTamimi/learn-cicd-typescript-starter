@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+/// <reference types="node" />
 type Config = {
   db: DBConfig;
   api: APIConfig;
