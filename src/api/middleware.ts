@@ -3,9 +3,7 @@ import { respondWithError } from "./json.js";
 import { getUser } from "../db/queries/users.js";
 import { getAPIKey } from "./auth.js";
 
-export function middlewareAuth(
-  handler: () => Promise<void> | void
-) {
+export function middlewareAuth(handler: () => Promise<void> | void) {
   return async (req: Request, res: Response) => {
     try {
       const apiKey = getAPIKey(req.headers);
