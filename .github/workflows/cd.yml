@@ -1,0 +1,25 @@
+name: Deploy workflow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Deploy:
+    name: deploy ts project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Building the app
+        run: npm run build
