@@ -53,7 +53,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m "Fix formatting issues" || echo "No changes to commit"
-          git pull --rebase
+          git pull origin addtests --rebase
           git push origin HEAD:addtests || echo "Could not push changes"
 
       # - name: Lint
