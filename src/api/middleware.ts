@@ -4,7 +4,9 @@ import { getUser } from "../db/queries/users.js";
 import { getAPIKey } from "./auth.js";
 import { respondWithError } from "./json.js";
 
-export function middlewareAuth(handler: (req: Request, res: Response, user: User) => Promise<void> | void) {
+export function middlewareAuth(
+  handler: (req: Request, res: Response, user: User) => Promise<void> | void,
+) {
   return async (req: Request, res: Response) => {
     try {
       const apiKey = getAPIKey(req.headers);
