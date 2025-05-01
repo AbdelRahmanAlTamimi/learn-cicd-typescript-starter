@@ -53,7 +53,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m "Fix formatting issues" || echo "No changes to commit"
-          git push || echo "Could not push changes"
+          git push origin HEAD:addtests || echo "Could not push changes"
 
       # - name: Lint
       #   run: npm run lint --max-warnings=0
