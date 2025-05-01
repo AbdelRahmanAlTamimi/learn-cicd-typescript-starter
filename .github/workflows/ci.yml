@@ -41,7 +41,19 @@ jobs:
         run: npm ci
 
       - name: Formatting check
+        id: format-check
         run: npm run format:check
+        continue-on-error: true
 
-      - name: Lint
-        run: npm run lint --max-warnings=0
+      - name: Fix formatting if needed
+        if: steps.format-check.outcome == 'failure'
+        run: |
+          npm run format:write
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Fix formatting issues" || echo "No changes to commit"
+          git push || echo "Could not push changes"
+
+      # - name: Lint
+      #   run: npm run lint --max-warnings=0

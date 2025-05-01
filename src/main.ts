@@ -34,7 +34,7 @@ app.use("/", express.static(path.join(__dirname, config.api.filepathRoot)));
 const v1Router = express.Router();
 
 if (db) {
-  v1Router.post("/users", handlerUsersCreate);
+  v1Router.post("/users", middlewareAuth(handlerUsersCreate));
   v1Router.get("/users", middlewareAuth(handlerUsersGet));
   v1Router.get("/notes", middlewareAuth(handlerNotesGet));
   v1Router.post("/notes", middlewareAuth(handlerNotesCreate));
